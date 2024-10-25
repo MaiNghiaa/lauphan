@@ -1,0 +1,83 @@
+.container {
+  max-width: 1200px !important;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@font-face {
+  font-family: "SansitaOne";
+  src: url("../Fonts/SansitaOne.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoSlab-Bold";
+  src: url("../Fonts/RobotoSlab/RobotoSlab-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoSlab-Light";
+  src: url("../Fonts/RobotoSlab/RobotoSlab-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoSlab-Regular";
+  src: url("../Fonts/RobotoSlab/RobotoSlab-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RobotoSlab-Thin";
+  src: url("../Fonts/RobotoSlab/RobotoSlab-Thin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.boxShadow {
+  margin-right: 14px;
+  box-shadow: 0 0 2.2px rgb(0 0 0 / 22%), 0 6.7px 5.3px rgb(0 0 0 / 15%),
+    0 12.5px 10px rgb(0 0 0 / 0%), 0 22.3px 17.9px rgb(0 0 0 / 0%),
+    0 41.8px 33.4px rgb(0 0 0 / 0%), 0 100px 80px rgb(0 0 0 / 0%);
+}
+
+@media only screen and (min-width: 769px) {
+  .banner-trademark {
+    background: url(../Images/bannertrade.jpg);
+    color: white;
+    background-position: center top;
+    background-size: cover;
+    margin-top: 100px;
+    height: 602px;
+  }
+}

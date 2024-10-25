@@ -1,0 +1,26 @@
+#header {
+  background-image: url("https://lauphan.com/WebLauPhan/theme/bg-header-lp.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media only screen and (min-width: 811px) {
+  .btn-dangnhap {
+    border: 1px solid #e84a1b;
+    color: #e84a1b;
+    height: 31pt;
+    border-radius: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 139pt;
+    background: #fbfbfb00;
+    text-decoration: none;
+  }
+}
+
+.active-link {
+  border-bottom: 4px solid #e84a1b;
+  font-weight: bold;
+}

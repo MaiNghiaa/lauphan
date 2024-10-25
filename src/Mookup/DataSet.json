@@ -1,0 +1,20 @@
+[
+  {
+    "price": "139k",
+    "slogan": "Gọi thả ga, ăn thật đã",
+    "quantity": "10 món",
+    "image": "imgSet.png"
+  },
+  {
+    "price": "189K",
+    "slogan": "Thêm thật nhiều món hấp dẫn",
+    "quantity": "30 món",
+    "image": "imgSet.png"
+  },
+  {
+    "price": "249k",
+    "slogan": "Special",
+    "quantity": "Hải sản",
+    "image": "imgSet.png"
+  }
+]
