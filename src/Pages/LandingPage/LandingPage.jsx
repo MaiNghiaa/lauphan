@@ -6,7 +6,7 @@ import App from "./Sections/App";
 
 export default function LandingPage() {
   return (
-    <main className="pt-[71px]">
+    <main>
       <ContentSlider />
       <MainContent />
       <Category />
