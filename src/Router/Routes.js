@@ -1,17 +1,18 @@
-import { lazy, memo, useEffect, Suspense } from "react";
+import { lazy, memo, Suspense } from "react";
 import { useRoutes, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import Porlet from "../Pages/Porlet/Porlet";
 import News from "../Pages/News/News";
+import BookingPage from "../Pages/BookingPage/BookingPage";
+import AddressPage from "../Pages/AddressPage/AddressPage";
 
 export const normalRoutes = [];
 export const authRoutes = [];
 
 const PageLayout = lazy(() => import("../Layouts/PageLayout"));
-
 function Router() {
-  const location = useLocation(); // Track current route location
+  const location = useLocation();
 
   const routes = [
     {
@@ -26,7 +27,8 @@ function Router() {
         { path: "/", element: <LandingPage /> },
         { path: "/thuc-don", element: <Porlet /> },
         { path: "/tin-tuc", element: <News /> },
-        // Add other routes here if necessary
+        { path: "/dat-ban", element: <BookingPage /> },
+        { path: "/dia-chi", element: <AddressPage /> },
       ],
     },
   ];
@@ -36,7 +38,7 @@ function Router() {
   return (
     <TransitionGroup>
       <CSSTransition
-        key={location.key} // Use location.key for unique transitions
+        key={location.key}
         timeout={{ enter: 300, exit: 300 }}
         classNames="fade"
       >

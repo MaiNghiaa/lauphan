@@ -2,12 +2,15 @@ import React from "react";
 import Data from "../../Mookup/DataSet.json";
 export default function Porlet() {
   return (
-    <div className="Porlet">
+    <div className="Porlet pt-[71px]">
       <div className="Porlet-wrapper container">
         <p className="text-center text-[25pt] font-bold py-24">Thực đơn</p>
         <div className="main-porlet ">
           {Data.map((item, index) => (
-            <div className="flex items-start justify-around pb-[10px] select-none">
+            <div
+              className="flex items-start justify-around pb-[10px] select-none"
+              key={index}
+            >
               <div className="flex flex-col justify-start">
                 <div className="box-price border-l-[9px] border-l-[#df5800] h-[103pt] pl-[10pt]">
                   <div className="price text-[35pt] uppercase leading-[50px] font-[SansitaOne]">

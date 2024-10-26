@@ -12,16 +12,16 @@ export default function Category() {
           </div>
         </div>
         <div className="main-porlet flex flex-wrap mx-[-15px] ">
-          <div class=" trademark-box-wrap mb-[30px] flex-[0_0_50%] max-w-[50%] relative w-full px-[15px]">
+          <div className=" trademark-box-wrap mb-[30px] flex-[0_0_50%] max-w-[50%] relative w-full px-[15px]">
             <div
-              class="trademark-box h-full mb-[30px]"
+              className="trademark-box h-full mb-[30px]"
               style={{ backgroundColor: "#f15a29" }}
             >
-              <div class="img-trademark text-center h-[130px] pt-[10px]">
+              <div className="img-trademark text-center h-[130px] pt-[10px]">
                 <a href="https://chaoxian.com.vn/">
                   <img
                     src="https://cdn.lauphan.com:9998/api/file/img?PathFile=/brand/logoImage_202410202229050.svg"
-                    class="brand-img absolute left-0 right-0 top-0 m-auto max-h-[120px]"
+                    className="brand-img absolute left-0 right-0 top-0 m-auto max-h-[120px]"
                     alt=""
                   />
                 </a>
@@ -50,16 +50,16 @@ export default function Category() {
               </div>
             </div>
           </div>{" "}
-          <div class=" trademark-box-wrap mb-[30px] flex-[0_0_50%] max-w-[50%] relative w-full px-[15px]">
+          <div className=" trademark-box-wrap mb-[30px] flex-[0_0_50%] max-w-[50%] relative w-full px-[15px]">
             <div
-              class="trademark-box h-full mb-[30px]"
+              className="trademark-box h-full mb-[30px]"
               style={{ backgroundColor: "#f15a29" }}
             >
-              <div class="img-trademark text-center h-[130px] pt-[10px]">
+              <div className="img-trademark text-center h-[130px] pt-[10px]">
                 <a href="https://chaoxian.com.vn/">
                   <img
                     src="https://cdn.lauphan.com:9998/api/file/img?PathFile=/brand/logoImage_202410202229050.svg"
-                    class="brand-img absolute left-0 right-0 top-0 m-auto max-h-[120px]"
+                    className="brand-img absolute left-0 right-0 top-0 m-auto max-h-[120px]"
                     alt=""
                   />
                 </a>
@@ -88,16 +88,16 @@ export default function Category() {
               </div>
             </div>
           </div>{" "}
-          <div class=" trademark-box-wrap mb-[30px] flex-[0_0_50%] max-w-[50%] relative w-full px-[15px]">
+          <div className=" trademark-box-wrap mb-[30px] flex-[0_0_50%] max-w-[50%] relative w-full px-[15px]">
             <div
-              class="trademark-box h-full mb-[30px]"
+              className="trademark-box h-full mb-[30px]"
               style={{ backgroundColor: "#f15a29" }}
             >
-              <div class="img-trademark text-center h-[130px] pt-[10px]">
+              <div className="img-trademark text-center h-[130px] pt-[10px]">
                 <a href="https://chaoxian.com.vn/">
                   <img
                     src="https://cdn.lauphan.com:9998/api/file/img?PathFile=/brand/logoImage_202410202229050.svg"
-                    class="brand-img absolute left-0 right-0 top-0 m-auto max-h-[120px]"
+                    className="brand-img absolute left-0 right-0 top-0 m-auto max-h-[120px]"
                     alt=""
                   />
                 </a>

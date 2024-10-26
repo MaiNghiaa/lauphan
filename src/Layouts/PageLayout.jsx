@@ -8,7 +8,7 @@ export default function PageLayout() {
   return (
     <main className=" relative">
       <Header />
-      <div id="body" className="pt-[71px]">
+      <div id="body">
         <Outlet />
       </div>
       <Footer />

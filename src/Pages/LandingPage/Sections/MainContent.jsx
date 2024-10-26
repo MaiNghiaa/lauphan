@@ -1,5 +1,5 @@
 import React from "react";
-import data from "../Mookup/DataSet.json";
+import data from "../../../Mookup/DataSet.json";
 export default function MainContent() {
   return (
     <div className="MainContent mt-[100px]">
@@ -27,7 +27,7 @@ export default function MainContent() {
                 </div>
                 <div className="box-img pt-[35pt] relative">
                   <img
-                    src={require(`../Assets/Images/${item.image}`)}
+                    src={require(`../../../Assets/Images/${item.image}`)}
                     alt="Product"
                   />
                 </div>
