@@ -31,7 +31,7 @@ export default function AddressPage() {
                   Chọn cơ sở
                 </label>
                 <select
-                  className="form-control w-full outline-none"
+                  className="form-control w-full border-0 border-b-[1px] border-[#495057] outline-none"
                   id="selectCoso"
                   onChange={(e) => setSelectChoose(e.target.value)}
                 >

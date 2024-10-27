@@ -1,33 +1,4 @@
-.container {
-  max-width: 1200px !important;
-}
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
+/* FontFace */
 
 @font-face {
   font-family: "SansitaOne";
@@ -63,45 +34,25 @@
   font-weight: normal;
   font-style: normal;
 }
+/* End FontFace */
+
+.container {
+  max-width: 1200px !important;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 .boxShadow {
   margin-right: 14px;
   box-shadow: 0 0 2.2px rgb(0 0 0 / 22%), 0 6.7px 5.3px rgb(0 0 0 / 15%),
     0 12.5px 10px rgb(0 0 0 / 0%), 0 22.3px 17.9px rgb(0 0 0 / 0%),
     0 41.8px 33.4px rgb(0 0 0 / 0%), 0 100px 80px rgb(0 0 0 / 0%);
-}
-
-@media only screen and (min-width: 769px) {
-  .banner-trademark {
-    background: url(../Images/bannertrade.jpg);
-    color: white;
-    background-position: center top;
-    background-size: cover;
-    margin-top: 100px;
-    height: 602px;
-  }
-}
-
-@media only screen and (min-width: 769px) {
-  .title-address {
-    font-size: 20px;
-    text-transform: uppercase;
-    font-family: "RobotoSlab-Bold";
-    color: white;
-    padding-top: 94px;
-    padding-bottom: 60px;
-  }
-}
-
-@media only screen and (min-width: 769px) {
-  .title-last-row {
-    font-size: 15px;
-    text-transform: uppercase;
-    font-family: "RobotoSlab-Bold";
-    color: white;
-    padding-top: 50px;
-    padding-bottom: 60px;
-  }
 }
 
 .lp-address-page {
@@ -112,17 +63,6 @@
     rgba(21, 44, 59, 1) 51%,
     rgba(149, 60, 38, 1) 100%
   );
-}
-
-@media only screen and (min-width: 769px) {
-  .main-content-address {
-    background-color: white;
-    border-radius: 15px;
-    padding: 35px;
-    box-shadow: 0 0 2.2px rgb(0 0 0 / 56%), 0 6.7px 5.3px rgb(0 0 0 / 34%),
-      0 12.5px 10px rgb(0 0 0 / 0%), 0 22.3px 17.9px rgb(0 0 0 / 0%),
-      0 41.8px 33.4px rgb(0 0 0 / 0%), 0 100px 80px rgb(0 0 0 / 0%);
-  }
 }
 
 #btn1 {
@@ -165,4 +105,133 @@ select.form-control:not([multiple]):not([size]),
   /* border: 0.0625rem solid #ced4da; */
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Media Query */
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .banner-trademark {
+    background: url(../Images/bannertrade.jpg);
+    color: white;
+    background-position: center top;
+    background-size: cover;
+    margin-top: 100px;
+    height: 602px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .title-address {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: "RobotoSlab-Bold";
+    color: white;
+    padding-top: 94px;
+    padding-bottom: 60px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .title-last-row {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: "RobotoSlab-Bold";
+    color: white;
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .main-content-address {
+    background-color: white;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 0 2.2px rgb(0 0 0 / 56%), 0 6.7px 5.3px rgb(0 0 0 / 34%),
+      0 12.5px 10px rgb(0 0 0 / 0%), 0 22.3px 17.9px rgb(0 0 0 / 0%),
+      0 41.8px 33.4px rgb(0 0 0 / 0%), 0 100px 80px rgb(0 0 0 / 0%);
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .OTPcode {
+    color: #162938;
+    font-size: 14pt;
+    font-family: "RobotoSlab-Regular";
+    padding-bottom: 10px;
+    padding-top: 10px;
+    float: left;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .form-login-cam input {
+    border: 1px solid #d8d8d8;
+    background: #d8d8d8;
+    height: 45px;
+    width: 259pt;
+    border-radius: 90px !important;
+    font-family: "RobotoSlab-Regular";
+    font-size: 14pt;
+    margin: auto;
+    margin-bottom: 25px;
+  }
+}
+@media only screen and (min-width: 811px) {
+  .form-login-cam input {
+    border: 1px solid #d8d8d8;
+    background: #d8d8d8;
+    height: 45px;
+    width: 259pt;
+    border-radius: 90px !important;
+    font-family: "RobotoSlab-Regular";
+    font-size: 14pt;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .send-otp button {
+    border: 1px solid #ff6a00;
+    background: #ff6a00;
+    color: white;
+    font-family: "RobotoSlab-Medium";
+    height: 31pt;
+    border-radius: 25px;
+    width: 139pt;
+    font-size: 12pt;
+  }
+}
+
+@media only screen and (min-width: 811px) {
+  .send-otp button {
+    border: 1px solid #ff6a00;
+    background: #ff6a00;
+    color: white;
+    font-family: "RobotoSlab-Medium";
+    height: 31pt;
+    border-radius: 25px;
+    width: 139pt;
+    font-size: 12pt;
+  }
 }

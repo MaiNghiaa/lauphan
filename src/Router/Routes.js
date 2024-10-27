@@ -6,6 +6,15 @@ import Porlet from "../Pages/Porlet/Porlet";
 import News from "../Pages/News/News";
 import BookingPage from "../Pages/BookingPage/BookingPage";
 import AddressPage from "../Pages/AddressPage/AddressPage";
+import AuthPage from "../Pages/AuthenPage/AuthPage";
+import {
+  MAINMENU,
+  PORLETPAGE,
+  NEWSPAGE,
+  BOOKINGPAGE,
+  ADDRESSPAGE,
+  AUTHENPAGE,
+} from "./Path";
 
 export const normalRoutes = [];
 export const authRoutes = [];
@@ -24,11 +33,12 @@ function Router() {
         </Suspense>
       ),
       children: [
-        { path: "/", element: <LandingPage /> },
-        { path: "/thuc-don", element: <Porlet /> },
-        { path: "/tin-tuc", element: <News /> },
-        { path: "/dat-ban", element: <BookingPage /> },
-        { path: "/dia-chi", element: <AddressPage /> },
+        { path: MAINMENU, element: <LandingPage /> },
+        { path: PORLETPAGE, element: <Porlet /> },
+        { path: NEWSPAGE, element: <News /> },
+        { path: BOOKINGPAGE, element: <BookingPage /> },
+        { path: ADDRESSPAGE, element: <AddressPage /> },
+        { path: AUTHENPAGE, element: <AuthPage /> },
       ],
     },
   ];

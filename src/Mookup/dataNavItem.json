@@ -1,0 +1,22 @@
+[
+  {
+    "href": "/",
+    "title": "Trang chủ"
+  },
+  {
+    "href": "/dat-ban",
+    "title": "Đặt bàn"
+  },
+  {
+    "href": "/thuc-don",
+    "title": "Thực đơn"
+  },
+  {
+    "href": "/tin-tuc",
+    "title": "Tin tức"
+  },
+  {
+    "href": "/dia-chi",
+    "title": "Địa chỉ"
+  }
+]

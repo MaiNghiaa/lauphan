@@ -3,30 +3,8 @@ import React, { useContext } from "react";
 import "../Assets/Css/Header.css";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../Context/GlobalContext";
-
+import navList from "../Mookup/dataNavItem.json";
 export default function Header() {
-  const navList = [
-    {
-      href: "/",
-      title: "Trang chủ",
-    },
-    {
-      href: "/dat-ban",
-      title: "Đặt bàn",
-    },
-    {
-      href: "/thuc-don",
-      title: "Thực đơn",
-    },
-    {
-      href: "/tin-tuc",
-      title: "Tin tức",
-    },
-    {
-      href: "/dia-chi",
-      title: "Địa chỉ",
-    },
-  ];
   const { navClick, updateNavClick } = useContext(GlobalContext);
   console.log(navClick);
   const handleNavClick = (path) => {
@@ -83,15 +61,17 @@ export default function Header() {
               : "act flex visible"
           }
         >
-          <button className="flex items-center justify-center btn-dangnhap select-none">
-            Đăng nhập
-            <span className="ml-[10px] mt-[1px]">
-              <img
-                src="https://phanexpress.com/WebLauPhan/theme/user.svg"
-                alt=""
-              />
-            </span>
-          </button>
+          <Link to="/Dang-nhap">
+            <button className="flex items-center justify-center btn-dangnhap select-none">
+              Đăng nhập
+              <span className="ml-[10px] mt-[1px]">
+                <img
+                  src="https://phanexpress.com/WebLauPhan/theme/user.svg"
+                  alt=""
+                />
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
     </header>

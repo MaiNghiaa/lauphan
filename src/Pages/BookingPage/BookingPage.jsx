@@ -3,7 +3,7 @@ import Address from "../../Mookup/dataAddress.json";
 export default function BookingPage() {
   const [selectChoose, setSelectChoose] = useState("");
 
-  console.log(selectChoose);
+  // console.log(selectChoose);
   return (
     <div className="lp-address-page pt-[70.15px] pb-[250px] bg-white">
       <div className="container">
