@@ -28,6 +28,7 @@ export default function BookingPage() {
               </div>
               <div className="form-chose-coso flex justify-stretch flex-col self-start w-full">
                 <label className="max-w-full inline-block mb-[0.5rem]">
+                
                   Chọn cơ sở
                 </label>
                 <select
