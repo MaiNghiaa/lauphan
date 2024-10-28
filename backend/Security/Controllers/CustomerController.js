@@ -9,6 +9,7 @@ module.exports = {
     if (!email || !password) {
       return res.status(400).send("Email và mật khẩu là bắt buộc.");
     }
+    
   },
 
   // Register Đăng kí

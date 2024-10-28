@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import dataUser from "../../Mookup/dataUser.json";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/AuthContext";
+import BookingPage from "../BookingPage/BookingPage";
 export default function AuthPage() {
+  const navigate = useNavigate();
+  const { setIsAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     phoneNumber: "",
     password: "",
@@ -22,7 +27,9 @@ export default function AuthPage() {
         user.password === formData.password
     );
     if (found) {
-      console.log("done");
+      console.log("Đăng nhập thành công");
+      setIsAuthenticated(true);
+      navigate(BookingPage);
     } else {
       console.log("error");
     }
@@ -56,7 +63,11 @@ export default function AuthPage() {
                 <div className="OTPcode text-left">Nhập mật khẩu</div>
                 <div className="form-login-cam mb-[15px]">
                   <input
+<<<<<<< HEAD
                     type="password"
+=======
+                    type="text"
+>>>>>>> 255d801584d2b40cf9c24c1b17b70cfcbb8f6fc5
                     className="form-control text-left outline-none"
                     name="password"
                     value={formData.password}
@@ -65,9 +76,7 @@ export default function AuthPage() {
                     placeholder="Mật khẩu"
                   />
                 </div>
-                <button className="self-center px-4 py-2 text-[16px] font-bold">
-                  Đăng kí
-                </button>
+
                 {/* <label
                   id="error"
                   className="error max-w-full text-[red]"
@@ -85,6 +94,9 @@ export default function AuthPage() {
                     Đăng nhập
                   </button>
                 </div>
+                <button className="self-center px-4 py-2 text-[16px] font-semibold">
+                  Đăng kí
+                </button>
               </div>
             </form>
           </div>
