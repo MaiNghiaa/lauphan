@@ -63,11 +63,7 @@ export default function AuthPage() {
                 <div className="OTPcode text-left">Nhập mật khẩu</div>
                 <div className="form-login-cam mb-[15px]">
                   <input
-<<<<<<< HEAD
                     type="password"
-=======
-                    type="text"
->>>>>>> 255d801584d2b40cf9c24c1b17b70cfcbb8f6fc5
                     className="form-control text-left outline-none"
                     name="password"
                     value={formData.password}
