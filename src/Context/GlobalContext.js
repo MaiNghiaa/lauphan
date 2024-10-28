@@ -9,7 +9,7 @@ export const GlobalProvider = ({ children }) => {
   const [navClick, setNavClick] = useState("");
 
   useEffect(() => {
-    const currentPath = localStorage.getItem("path");
+    const currentPath = sessionStorage.getItem("path");
     if (currentPath) {
       setNavClick(currentPath);
     }
@@ -17,7 +17,7 @@ export const GlobalProvider = ({ children }) => {
 
   const updateNavClick = (path) => {
     setNavClick(path);
-    localStorage.setItem("path", path);
+    sessionStorage.setItem("path", path);
   };
 
   return (
