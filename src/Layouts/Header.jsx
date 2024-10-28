@@ -25,6 +25,7 @@ export default function Header() {
           {navClick !== "/dat-ban" && navClick !== "/dia-chi" ? (
             <Link to="/">
               <img
+                onClick={() => handleNavClick("/")}
                 src="https://lauphan.com/WebLauPhan/theme/logo_phan.svg"
                 alt=""
                 className=" px-[12px] my-[4px] w-full object-cover"
@@ -33,6 +34,7 @@ export default function Header() {
           ) : (
             <Link to="/">
               <img
+                onClick={() => handleNavClick("/")}
                 src="https://phanexpress.com/WebLauPhan/theme/Phan_logoEx.svg"
                 alt=""
                 className="py-1 px-[12px] my-[4px] w-full object-cover"

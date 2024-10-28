@@ -4,6 +4,7 @@ import "./App.css";
 // import LandingPage from "./Pages/LandingPage/LandingPage";
 // import MainContent from "./Pages/MainContent";
 import "./Assets/Css/Global.css";
+import { AuthProvider } from "./Context/AuthContext";
 import Routes from "./Router/Routes";
 import { BrowserRouter } from "react-router-dom";
 
@@ -11,7 +12,9 @@ import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </BrowserRouter>
   );
 }
