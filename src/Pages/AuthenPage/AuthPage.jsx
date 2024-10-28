@@ -44,7 +44,7 @@ export default function AuthPage() {
                 <div className="form-login-cam mb-[25px]">
                   <input
                     type="text"
-                    className="form-control text-center outline-none"
+                    className="form-control text-left outline-none"
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}
@@ -56,8 +56,8 @@ export default function AuthPage() {
                 <div className="OTPcode text-left">Nhập mật khẩu</div>
                 <div className="form-login-cam mb-[15px]">
                   <input
-                    type="text"
-                    className="form-control text-center outline-none"
+                    type="password"
+                    className="form-control text-left outline-none"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
