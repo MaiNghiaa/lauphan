@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 // import dataUser from "../../Mookup/dataUser.json";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
-import BookingPage from "../BookingPage/BookingPage";
 import axios from "axios";
 export default function AuthPage() {
   const navigate = useNavigate();
-  const { setIsAuthenticated } = useAuth();
+  const { setIsAuthenticated, setUserData } = useAuth();
   const [formData, setFormData] = useState({
     phoneNumber: "",
     password: "",
@@ -19,6 +18,7 @@ export default function AuthPage() {
       [name]: value,
     }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitted Data:", formData);
@@ -28,12 +28,14 @@ export default function AuthPage() {
         formData
       );
       if (response.status === 200) {
-        console.log("Đăng nhập thành công:", response.data.data.name);
-        await response.data;
+        console.log("Đăng nhập thành công:", response.data);
 
         setIsAuthenticated(true);
         navigate("/dat-ban");
         // Thực hiện các hành động tiếp theo khi đăng nhập thành công
+        localStorage.setItem("username", response.data.user.name);
+        localStorage.setItem("UserID", response.data.user.id);
+        setUserData(response.data);
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {

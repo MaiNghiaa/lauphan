@@ -1,8 +1,4 @@
-const { useEffect } = require("react");
-const { readData } = require("../Utils/ReadFile");
-const fs = require("fs");
-const path = require("path");
-const usersFilePath = path.join(__dirname, "../Mookup/data_User.json");
+const db = require("../Database");
 
 module.exports = {
   // Login --------- đăng nhập,
@@ -12,26 +8,25 @@ module.exports = {
     if (!phoneNumber || !password) {
       return res.status(400).send("phone và mật khẩu là bắt buộc.");
     }
-    const dataUser = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
+    const query = "SELECT * FROM users WHERE phoneNumber = ? AND password = ?";
 
-    const user = dataUser.find(
-      (user) => user.phoneNumber === phoneNumber && user.password === password
-    );
-    if (user) {
-      console.log("Đăng nhập thành công");
-      res.status(200).json({
-        success: true,
-        data: user,
-        message: "Đăng nhập thành công",
-      });
-    } else {
-      return res.status(400).send("Tài khoản hoặc mật khẩu sai.");
-    }
+    db.query(query, [phoneNumber, password], (error, results) => {
+      if (error) {
+        console.error("Error during login query:", error);
+        return res.status(500).json({ error: "Database error" });
+      }
+
+      if (results.length > 0) {
+        res.status(200).json({ message: "Login successful", user: results[0] });
+      } else {
+        res.status(401).json({ error: "Invalid credentials" });
+      }
+    });
   },
 
   // Register Đăng kí
   register: (req, res) => {
-    const { email, password, ten, role } = req.body;
+    const { email, password, ten } = req.body;
 
     if (!email || !password || !ten) {
       return res.status(400).send("Email, password, and name are required.");
@@ -39,13 +34,114 @@ module.exports = {
   },
 
   //Hiển thị thông tin bàn đặt
-  readReservationinfor: () => {
-    return;
+  getBooking: (req, res) => {
+    const query = `SELECT * FROM booking`;
+
+    db.query(query, (error, results) => {
+      if (error) {
+        console.error("Error Read booking:", error);
+        return res.status(500).json({ error: "Database error" });
+      }
+      if (results.affectedRows === 0) {
+        return res.status(404).json({ error: "Booking not found" });
+      }
+      res.status(200).json({ message: "Booking Read successfully" });
+    });
   },
 
-  //Sửa thông tin bàn đặt
+  //update thông tin bàn đặt
+  updateBooking: (req, res) => {
+    const id = req.params.id;
+    const { restaurant, peopleCount, day, hour, name, phoneNumber, note } =
+      req.body;
+    const query = `
+    UPDATE booking SET restaurant = ?, peopleCount = ?, Day = ?, Hour = ?, Name = ?, phoneNumber = ?, Note = ? WHERE id = ?`;
+    db.query(
+      query,
+      [restaurant, peopleCount, day, hour, name, phoneNumber, note, id],
+      (error, results) => {
+        if (error) {
+          console.error("Error updating booking:", error);
+          return res.status(500).json({ error: "Database error" });
+        }
+        if (results.affectedRows === 0) {
+          return res.status(404).json({ error: "Booking not found" });
+        }
+        res.status(200).json({ message: "Booking updated successfully" });
+      }
+    );
+  },
 
   //Xóa thông tin bàn đặt
+  deleteBooking: (req, res) => {
+    const id = req.params.id;
+    const query = `DELETE FROM Booking WHERE id = ?`;
 
-  //Thêm thông tin bàn đặt
+    db.query(query, [id], (error, results) => {
+      if (error) {
+        console.error("Error deleting booking:", error);
+        return res.status(500).json({ error: "Database error" });
+      }
+      if (results.affectedRows === 0) {
+        return res.status(404).json({ error: "Booking not found" });
+      }
+      res.status(200).json({ message: "Booking deleted successfully" });
+    });
+  },
+
+  //Đặt bàn
+  createBooking: async (req, res) => {
+    const {
+      restaurant,
+      peopleCount,
+      day,
+      hour,
+      name,
+      phoneNumber,
+      note,
+      userID,
+    } = req.body;
+    const query = `
+      INSERT INTO Booking (restaurant, peopleCount, Day, Hour, Name, phoneNumber, Note, userID)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    db.query(
+      query,
+      [restaurant, peopleCount, day, hour, name, phoneNumber, note, userID],
+      (error, results) => {
+        if (error) {
+          console.error("Error creating booking:", error);
+          return res.status(500).json({ error: "Database error" });
+        }
+        res.status(201).json({
+          message: "Booking created successfully",
+          bookingId: results.insertId,
+        });
+      }
+    );
+    // console.log(
+    //   restaurant,
+    //   peopleCount,
+    //   day,
+    //   hour,
+    //   name,
+    //   phoneNumber,
+    //   note,
+    //   userID
+    // );
+  },
+
+  //Hiển thị thông tin tin tức
+  getNews: (req, res) => {
+    const query = "SELECT * FROM News ORDER BY created_at DESC";
+
+    db.query(query, (error, results) => {
+      if (error) {
+        console.error("Error fetching news:", error);
+        return res.status(500).json({ error: "Database error" });
+      }
+      res.status(200).json({ news: results });
+    });
+  },
 };
