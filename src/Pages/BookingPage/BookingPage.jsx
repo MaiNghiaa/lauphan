@@ -20,12 +20,12 @@ export default function BookingPage() {
   useEffect(() => {
     if (!isAuthenticated) navigate(AUTHENPAGE);
   }, [isAuthenticated, navigate]);
-
   const onCloseDialog = () => {
-    setTimeout(setOpenDialog(false), 3000);
+    setTimeout(() => setOpenDialog(false), 2000);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const idUser = localStorage.getItem("UserID");
     const bookingData = {
       restaurant: selectChoose,
       peopleCount,
@@ -34,6 +34,7 @@ export default function BookingPage() {
       Note,
       Name,
       phoneNumber,
+      userID: idUser,
     };
     console.log("Submitted Data:", bookingData);
     try {
@@ -225,10 +226,12 @@ export default function BookingPage() {
         </form>
       </div>
       {openDialog ? (
-        <Dialog status={openDialog} onCloseDialog={onCloseDialog} />
-      ) : (
-        " "
-      )}
+        <Dialog
+          status={openDialog}
+          onCloseDialog={onCloseDialog}
+          className={openDialog ? "" : "fade-out"} // Apply fade-out class conditionally
+        />
+      ) : null}
     </div>
   ) : null;
 }

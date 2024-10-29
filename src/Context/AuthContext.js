@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
     () => localStorage.getItem("userData") || {}
   );
 
-  // Lưu vào localStorage khi `isAuthenticated` hoặc `userData` thay đổi
   useEffect(() => {
     localStorage.setItem("isAuthenticated", isAuthenticated);
     localStorage.setItem("userData", userData);

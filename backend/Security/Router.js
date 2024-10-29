@@ -24,5 +24,12 @@ module.exports = function (app) {
   //cac route
 
   app.route("/Login").post(ProductsController.Login);
-  app.route("/Booking").post(ProductsController.Booking);
+
+  //Booking
+  app.route("/Booking").get(ProductsController.getBooking);
+  app.route("/Booking/Create").post(ProductsController.createBooking);
+  app.route("/Booking/Update").post(ProductsController.updateBooking);
+  app.route("/Booking/Delete").delete(ProductsController.deleteBooking);
+
+  app.route("/News").get(ProductsController.getNews);
 };

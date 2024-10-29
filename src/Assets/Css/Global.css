@@ -235,3 +235,8 @@ select.form-control:not([multiple]):not([size]),
     font-size: 12pt;
   }
 }
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}

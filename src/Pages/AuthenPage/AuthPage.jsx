@@ -28,12 +28,13 @@ export default function AuthPage() {
         formData
       );
       if (response.status === 200) {
-        console.log("Đăng nhập thành công:", response.data.data.name);
+        console.log("Đăng nhập thành công:", response.data);
 
         setIsAuthenticated(true);
         navigate("/dat-ban");
         // Thực hiện các hành động tiếp theo khi đăng nhập thành công
-        localStorage.setItem("username", response.data.data.name);
+        localStorage.setItem("username", response.data.user.name);
+        localStorage.setItem("UserID", response.data.user.id);
         setUserData(response.data);
       }
     } catch (error) {

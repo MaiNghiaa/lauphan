@@ -8,7 +8,7 @@ import { useAuth } from "../Context/AuthContext";
 export default function Header() {
   const { navClick, updateNavClick } = useContext(GlobalContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { setIsAuthenticated } = useAuth();
+  const { setIsAuthenticated, userData } = useAuth();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
