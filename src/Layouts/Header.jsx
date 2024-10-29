@@ -4,12 +4,14 @@ import "../Assets/Css/Header.css";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../Context/GlobalContext";
 import navList from "../Mookup/dataNavItem.json";
+import { useAuth } from "../Context/AuthContext";
 export default function Header() {
   const { navClick, updateNavClick } = useContext(GlobalContext);
   console.log(navClick);
   const handleNavClick = (path) => {
     updateNavClick(path);
   };
+  const { userData } = useAuth();
 
   return (
     <header
@@ -63,17 +65,21 @@ export default function Header() {
               : "act flex visible"
           }
         >
-          <Link to="/Dang-nhap">
-            <button className="flex items-center justify-center btn-dangnhap select-none">
-              Đăng nhập
-              <span className="ml-[10px] mt-[1px]">
-                <img
-                  src="https://phanexpress.com/WebLauPhan/theme/user.svg"
-                  alt=""
-                />
-              </span>
-            </button>
-          </Link>
+          {userData ? (
+            ""
+          ) : (
+            <Link to="/Dang-nhap">
+              <button className="flex items-center justify-center btn-dangnhap select-none">
+                Đăng nhập
+                <span className="ml-[10px] mt-[1px]">
+                  <img
+                    src="https://phanexpress.com/WebLauPhan/theme/user.svg"
+                    alt=""
+                  />
+                </span>
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </header>

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import dataUser from "../../Mookup/dataUser.json";
+import React, { useEffect, useState } from "react";
+// import dataUser from "../../Mookup/dataUser.json";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import BookingPage from "../BookingPage/BookingPage";
+import axios from "axios";
 export default function AuthPage() {
   const navigate = useNavigate();
   const { setIsAuthenticated } = useAuth();
@@ -18,22 +19,31 @@ export default function AuthPage() {
       [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitted Data:", formData);
-    const found = dataUser.some(
-      (user) =>
-        user.phoneNumber === formData.phoneNumber &&
-        user.password === formData.password
-    );
-    if (found) {
-      console.log("Đăng nhập thành công");
-      setIsAuthenticated(true);
-      navigate(BookingPage);
-    } else {
-      console.log("error");
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/Login",
+        formData
+      );
+      if (response.status === 200) {
+        console.log("Đăng nhập thành công:", response.data.data.name);
+        await response.data;
+
+        setIsAuthenticated(true);
+        navigate("/dat-ban");
+        // Thực hiện các hành động tiếp theo khi đăng nhập thành công
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        console.error("Endpoint không tìm thấy.");
+      } else {
+        console.error("Lỗi khi đăng nhập:", error.message);
+      }
     }
   };
+  useEffect(() => {}, []);
   return (
     <div className="lp-address-page pt-[70.15px] pb-[250px]">
       <div className="container">
