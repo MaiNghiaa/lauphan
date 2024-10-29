@@ -24,4 +24,5 @@ module.exports = function (app) {
   //cac route
 
   app.route("/Login").post(ProductsController.Login);
+  app.route("/Booking").post(ProductsController.Booking);
 };

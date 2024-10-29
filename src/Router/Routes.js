@@ -1,5 +1,5 @@
 import { lazy, memo, Suspense } from "react";
-import { useRoutes, useLocation, Navigate } from "react-router-dom";
+import { useRoutes, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import Porlet from "../Pages/Porlet/Porlet";
@@ -15,13 +15,8 @@ import {
   ADDRESSPAGE,
   AUTHENPAGE,
 } from "./Path";
-import { useAuth } from "../Context/AuthContext";
 
 const PageLayout = lazy(() => import("../Layouts/PageLayout"));
-function ProtectedRoute({ children }) {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? children : <Navigate to={AUTHENPAGE} />;
-}
 function Router() {
   const location = useLocation();
   const routes = [
@@ -37,14 +32,7 @@ function Router() {
         { path: MAINMENU, element: <LandingPage /> },
         { path: PORLETPAGE, element: <Porlet /> },
         { path: NEWSPAGE, element: <News /> },
-        {
-          path: BOOKINGPAGE,
-          element: (
-            <ProtectedRoute>
-              <BookingPage />
-            </ProtectedRoute>
-          ),
-        },
+        { path: BOOKINGPAGE, element: <BookingPage /> },
         { path: ADDRESSPAGE, element: <AddressPage /> },
         { path: AUTHENPAGE, element: <AuthPage /> },
       ],
