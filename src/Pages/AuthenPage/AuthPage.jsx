@@ -102,7 +102,10 @@ export default function AuthPage() {
                     Đăng nhập
                   </button>
                 </div>
-                <button className="self-center px-4 py-2 text-[16px] font-semibold">
+                <button
+                  className="self-center px-4 py-2 text-[16px] font-semibold"
+                  onClick={() => navigate("/dang-ki")}
+                >
                   Đăng kí
                 </button>
               </div>

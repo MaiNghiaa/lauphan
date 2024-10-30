@@ -66,7 +66,7 @@ export default function Header() {
         <div className="nav">
           <ul className="flex items-center select-none">
             {navList.map((navItem, index) => (
-              <Link to={navItem.href}>
+              <Link to={navItem.href} key={index}>
                 <li
                   onClick={() => handleNavClick(navItem.href)}
                   className="text-white pr-[70px] p-[5px] cursor-pointer text-[19.5px] hover:font-bold hover:border-[4px_solid_#e84a1b]"

@@ -14,7 +14,9 @@ import {
   BOOKINGPAGE,
   ADDRESSPAGE,
   AUTHENPAGE,
+  REGISTER,
 } from "./Path";
+import RegisterPage from "../Pages/AuthenPage/RegisterPage";
 
 const PageLayout = lazy(() => import("../Layouts/PageLayout"));
 function Router() {
@@ -35,6 +37,7 @@ function Router() {
         { path: BOOKINGPAGE, element: <BookingPage /> },
         { path: ADDRESSPAGE, element: <AddressPage /> },
         { path: AUTHENPAGE, element: <AuthPage /> },
+        { path: REGISTER, element: <RegisterPage /> },
       ],
     },
   ];
