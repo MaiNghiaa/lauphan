@@ -92,12 +92,23 @@ module.exports = {
       restaurant,
       peopleCount,
       day,
-      hour,
-      name,
+      Hour,
+      Name,
       phoneNumber,
-      note,
+      Note,
       userID,
     } = req.body;
+
+    console.log(
+      restaurant,
+      peopleCount,
+      day,
+      Hour,
+      Name,
+      phoneNumber,
+      Note,
+      userID
+    );
     const query = `
       INSERT INTO Booking (restaurant, peopleCount, Day, Hour, Name, phoneNumber, Note, userID)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
@@ -105,7 +116,7 @@ module.exports = {
 
     db.query(
       query,
-      [restaurant, peopleCount, day, hour, name, phoneNumber, note, userID],
+      [restaurant, peopleCount, day, Hour, Name, phoneNumber, Note, userID],
       (error, results) => {
         if (error) {
           console.error("Error creating booking:", error);
@@ -127,24 +138,6 @@ module.exports = {
     //   note,
     //   userID
     // );
-  },
-  getMyUser: (req, res) => {
-    const { id } = req.params;
-    const query = "SELECT * FROM Users WHERE id=?";
-
-    db.query(query, [id], (error, results) => {
-      if (error) {
-        console.error("Error fetching user:", error);
-        return res.status(500).json({ error: "Database error" });
-      }
-
-      if (results.length === 0) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
-      // Return the first result as a single user object
-      res.status(200).json({ user: results[0] });
-    });
   },
 
   //Hiển thị thông tin tin tức

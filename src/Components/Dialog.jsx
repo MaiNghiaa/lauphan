@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Dialog({ onCloseDialog }) {
+export default function Dialog({ onCloseDialog, message }) {
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto transition">
       <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
@@ -30,15 +30,24 @@ export default function Dialog({ onCloseDialog }) {
             </div>
             <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
               <h3 className="text-lg leading-6 font-medium text-gray-900">
-                Modal Title
+                Thông báo
               </h3>
               <div className="mt-2">
                 <p className="text-sm leading-5 text-gray-500">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  mollitia inventore quod. Yay!
+                  {message}{" "}
+                  {/* Hiển thị thông báo động từ thuộc tính message */}
                 </p>
               </div>
             </div>
+          </div>
+          <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+            <button
+              type="button"
+              className="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+              onClick={onCloseDialog}
+            >
+              Đóng
+            </button>
           </div>
         </div>
       </div>
