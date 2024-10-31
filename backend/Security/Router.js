@@ -28,8 +28,10 @@ module.exports = function (app) {
   //Booking
   app.route("/Booking").get(ProductsController.getBooking);
   app.route("/Booking/Create").post(ProductsController.createBooking);
-  app.route("/Booking/Update").post(ProductsController.updateBooking);
+  app.route("/Booking/Update/:id").post(ProductsController.updateBooking);
   app.route("/Booking/Delete").delete(ProductsController.deleteBooking);
+
+  app.route("/users").get(ProductsController.getUsers);
 
   app.route("/News").get(ProductsController.getNews);
 };

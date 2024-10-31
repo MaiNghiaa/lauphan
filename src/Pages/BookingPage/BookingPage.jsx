@@ -3,11 +3,12 @@ import Address from "../../Mookup/dataAddress.json";
 import { useAuth } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { AUTHENPAGE } from "../../Router/Path";
-
 import axios from "axios";
 import Dialog from "../../Components/Dialog";
+
 export default function BookingPage() {
   const [openDialog, setOpenDialog] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState(""); // Message for popup dialog
   const [selectChoose, setSelectChoose] = useState("");
   const [peopleCount, setPeopleCount] = useState("2");
   const [day, setDay] = useState("0");
@@ -17,14 +18,62 @@ export default function BookingPage() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!isAuthenticated) navigate(AUTHENPAGE);
   }, [isAuthenticated, navigate]);
+
   const onCloseDialog = () => {
-    setTimeout(() => setOpenDialog(false), 2000);
+    setOpenDialog(false);
+    setDialogMessage("");
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validation
+    if (!selectChoose) {
+      setDialogMessage("Vui lòng chọn nhà hàng.");
+      setOpenDialog(true);
+      return;
+    }
+    if (!peopleCount) {
+      setDialogMessage("Vui lòng chọn số người.");
+      setOpenDialog(true);
+      return;
+    }
+    if (!day || day === "0") {
+      setDialogMessage("Vui lòng chọn ngày.");
+      setOpenDialog(true);
+      return;
+    }
+    if (!Hour || Hour === "0") {
+      setDialogMessage("Vui lòng chọn giờ.");
+      setOpenDialog(true);
+      return;
+    }
+    if (!Name.trim()) {
+      setDialogMessage("Vui lòng nhập tên.");
+      setOpenDialog(true);
+      return;
+    }
+    if (!phoneNumber.trim()) {
+      setDialogMessage("Vui lòng nhập số điện thoại.");
+      setOpenDialog(true);
+      return;
+    }
+
+    // Kiểm tra định dạng số điện thoại
+    const phoneRegex = /^[0-9]{10,11}$/; // Chấp nhận 10-11 chữ số
+    if (!phoneRegex.test(phoneNumber)) {
+      setDialogMessage(
+        "Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng."
+      );
+      setOpenDialog(true);
+      return;
+    }
+
+    // Dữ liệu đặt bàn hợp lệ, tạo yêu cầu API
     const idUser = localStorage.getItem("UserID");
     const bookingData = {
       restaurant: selectChoose,
@@ -36,24 +85,25 @@ export default function BookingPage() {
       phoneNumber,
       userID: idUser,
     };
-    console.log("Submitted Data:", bookingData);
+
     try {
       const response = await axios.post(
-        "http://localhost:3000/Booking",
+        "http://localhost:3000/Booking/Create",
         bookingData
       );
       if (response.status === 200) {
-        setOpenDialog(200);
+        setDialogMessage("Đặt bàn thành công!");
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        console.error("Endpoint không tìm thấy.");
+        setDialogMessage("Endpoint không tìm thấy.");
       } else {
-        console.error("Lỗi khi đăng nhập:", error.message);
+        setDialogMessage("Lỗi khi đăng nhập: " + error.message);
       }
+    } finally {
+      setOpenDialog(true);
     }
   };
-
   return isAuthenticated ? (
     <div className="lp-address-page pt-[70.15px] pb-[250px] bg-white">
       <div className="container">
@@ -137,7 +187,7 @@ export default function BookingPage() {
                       onChange={(e) => setDay(e.target.value)}
                       className="form-control border-0 border-b-[1px] border-[#495057] outline-none"
                     >
-                      <option value="0" selected="">
+                      <option value="Hôm nay" selected="">
                         Hôm nay
                       </option>
                       <option value="Ngày mai">Ngày mai</option>
@@ -225,13 +275,13 @@ export default function BookingPage() {
           </div>
         </form>
       </div>
-      {openDialog ? (
+      {openDialog && (
         <Dialog
-          status={openDialog}
+          status={200}
           onCloseDialog={onCloseDialog}
-          className={openDialog ? "" : "fade-out"} // Apply fade-out class conditionally
+          message={dialogMessage}
         />
-      ) : null}
+      )}
     </div>
   ) : null;
 }
