@@ -45,31 +45,28 @@ module.exports = {
       if (results.affectedRows === 0) {
         return res.status(404).json({ error: "Booking not found" });
       }
-      res.status(200).json({ message: "Booking Read successfully" });
+      res
+        .status(200)
+        .json({ message: "Booking Read successfully", data: results });
     });
   },
 
   //update thông tin bàn đặt
   updateBooking: (req, res) => {
     const id = req.params.id;
-    const { restaurant, peopleCount, day, hour, name, phoneNumber, note } =
-      req.body;
+    const { status } = req.body;
     const query = `
-    UPDATE booking SET restaurant = ?, peopleCount = ?, Day = ?, Hour = ?, Name = ?, phoneNumber = ?, Note = ? WHERE id = ?`;
-    db.query(
-      query,
-      [restaurant, peopleCount, day, hour, name, phoneNumber, note, id],
-      (error, results) => {
-        if (error) {
-          console.error("Error updating booking:", error);
-          return res.status(500).json({ error: "Database error" });
-        }
-        if (results.affectedRows === 0) {
-          return res.status(404).json({ error: "Booking not found" });
-        }
-        res.status(200).json({ message: "Booking updated successfully" });
+    UPDATE booking SET status = ? WHERE id = ?`;
+    db.query(query, [status, id], (error, results) => {
+      if (error) {
+        console.error("Error updating booking:", error);
+        return res.status(500).json({ error: "Database error" });
       }
-    );
+      if (results.affectedRows === 0) {
+        return res.status(404).json({ error: "Booking not found" });
+      }
+      res.status(200).json({ message: "Booking updated successfully" });
+    });
   },
 
   //Xóa thông tin bàn đặt
@@ -131,6 +128,24 @@ module.exports = {
     //   userID
     // );
   },
+  getMyUser: (req, res) => {
+    const { id } = req.params;
+    const query = "SELECT * FROM Users WHERE id=?";
+
+    db.query(query, [id], (error, results) => {
+      if (error) {
+        console.error("Error fetching user:", error);
+        return res.status(500).json({ error: "Database error" });
+      }
+
+      if (results.length === 0) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      // Return the first result as a single user object
+      res.status(200).json({ user: results[0] });
+    });
+  },
 
   //Hiển thị thông tin tin tức
   getNews: (req, res) => {
@@ -142,6 +157,18 @@ module.exports = {
         return res.status(500).json({ error: "Database error" });
       }
       res.status(200).json({ news: results });
+    });
+  },
+
+  getUsers: (req, res) => {
+    const query = "SELECT * FROM Users ORDER BY created_at DESC";
+
+    db.query(query, (error, results) => {
+      if (error) {
+        console.error("Error fetching news:", error);
+        return res.status(500).json({ error: "Database error" });
+      }
+      res.status(200).json({ users: results });
     });
   },
 };
