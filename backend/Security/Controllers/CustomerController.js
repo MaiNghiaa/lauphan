@@ -122,7 +122,7 @@ module.exports = {
           console.error("Error creating booking:", error);
           return res.status(500).json({ error: "Database error" });
         }
-        res.status(201).json({
+        res.status(200).json({
           message: "Booking created successfully",
           bookingId: results.insertId,
         });

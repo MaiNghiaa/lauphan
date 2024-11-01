@@ -13,7 +13,7 @@ export default function BookingPage() {
   const [peopleCount, setPeopleCount] = useState("2");
   const [day, setDay] = useState("0");
   const [Hour, setHour] = useState("0");
-  const [Note, setNote] = useState("");
+  const [Note, setNote] = useState("Khong co");
   const [Name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const { isAuthenticated } = useAuth();
@@ -173,9 +173,15 @@ export default function BookingPage() {
                   onChange={(e) => setPeopleCount(e.target.value)}
                   className="form-control p-[0.375rem_0.75rem] border-0 border-b-[1px] border-[#495057] outline-none"
                 >
-                  <option>2</option>
-                  <option>2</option>
-                  <option>2</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                  <option value={6}>6</option>
+                  <option value={7}>7</option>
+                  <option value={8}>8</option>
+                  <option value={9}>9</option>
+                  <option value={10}>10</option>
                 </select>
               </div>
               <div className="date-order pt-[55px] flex items-center justify-between">
