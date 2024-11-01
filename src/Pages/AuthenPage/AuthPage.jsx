@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 // import dataUser from "../../Mookup/dataUser.json";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import axios from "axios";
+import { REGISTER } from "../../Router/Path";
 export default function AuthPage() {
   const navigate = useNavigate();
   const { setIsAuthenticated, setUserData } = useAuth();
@@ -55,7 +56,7 @@ export default function AuthPage() {
           </div>
         </div>
         <div className="flex flex-wrap mx-[-15px]">
-          <div className="flex-[0_0_100%] max-w-full w-full relative px-[15px] flex items-center justify-center">
+          <div className="flex-[0_0_100%] flex-col max-w-full w-full relative px-[15px] flex items-center justify-center">
             <form onSubmit={handleSubmit}>
               <div className="main-content-address w-full  flex flex-col items-start justify-center ">
                 {/* <div class="title-pu py-[20px] text-[16pt] text-[#ff6a00] font-bold"></div> */}
@@ -96,20 +97,20 @@ export default function AuthPage() {
                 <div className="pt-[15px] self-center">
                   <button
                     type="submit"
-                    class="bnt-sendotp border-[1px] h-[31pt] border-solid border-[#ff6a00] bg-[#ff6a00] text-white font-medium rounded-[25px] w-[139pt] text-[12pt]"
+                    className="bnt-sendotp border-[1px] h-[31pt] border-solid border-[#ff6a00] bg-[#ff6a00] text-white font-medium rounded-[25px] w-[139pt] text-[12pt]"
                     id="send-otp"
                   >
                     Đăng nhập
                   </button>
                 </div>
-                <button
-                  className="self-center px-4 py-2 text-[16px] font-semibold"
-                  onClick={() => navigate("/dang-ki")}
-                >
-                  Đăng kí
-                </button>
               </div>
             </form>
+
+            <Link to={REGISTER}>
+              <button className="mt-3 bnt-sendotp border-[1px] h-[31pt] border-solid border-[#ff6a00] bg-[#ff6a00] text-white font-medium rounded-[25px] w-[139pt] text-[12pt]">
+                Đăng kí
+              </button>
+            </Link>
           </div>
         </div>
       </div>
