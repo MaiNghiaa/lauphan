@@ -26,11 +26,66 @@ module.exports = {
 
   // Register Đăng kí
   register: (req, res) => {
-    const { email, password, ten } = req.body;
+    const {
+      email,
+      password,
+      name,
+      phoneNumber,
+      gender,
+      address,
+      city,
+      district,
+      role,
+    } = req.body;
 
-    if (!email || !password || !ten) {
+    // Kiểm tra nếu các trường quan trọng bị thiếu
+    if (!email || !password || !name) {
       return res.status(400).send("Email, password, and name are required.");
     }
+
+    // Kiểm tra email đã tồn tại trong database chưa
+    const checkEmailQuery = "SELECT * FROM Users WHERE email = ?";
+    db.query(checkEmailQuery, [email], (err, result) => {
+      if (err) {
+        console.error("Lỗi khi kiểm tra email:", err);
+        return res
+          .status(500)
+          .send("Đã xảy ra lỗi trong quá trình kiểm tra email.");
+      }
+
+      if (result.length > 0) {
+        return res.status(400).send("Email đã tồn tại.");
+      }
+
+      // Chèn người dùng mới vào bảng User
+      const insertUserQuery = `
+        INSERT INTO Users (phoneNumber, password, name, email, gender, address, city, district, role)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `;
+      db.query(
+        insertUserQuery,
+        [
+          phoneNumber,
+          password,
+          name,
+          email,
+          gender,
+          address,
+          city,
+          district,
+          role,
+        ],
+        (err, result) => {
+          if (err) {
+            console.error("Lỗi khi đăng ký người dùng:", err);
+            return res
+              .status(500)
+              .send("Đã xảy ra lỗi trong quá trình đăng ký.");
+          }
+          res.status(201).send("Đăng ký thành công!");
+        }
+      );
+    });
   },
 
   //Hiển thị thông tin bàn đặt
